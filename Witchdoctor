@@ -1,7 +1,17 @@
+var iFileName = "Witchdoctor [Lord of the Jungle's work, transcribed by ArtemisFox].js";
+RequiredSheetVersion("13.0.6");
+
+SourceList["LotJ"] = {
+	name: "Lords of the Jungle: Witchdoctor",
+	abbreviation: "LotJ",
+	group: "Home Brew",
+	date: "2026/09/11",
+};
+
 "witchdoctor": {
 		regExpSearch: /witchdoctor/i,
 		name: "Witchdoctor",
-		source: [["HB", 42], ["P", 78]],
+		source: ["LotJ", 78],
 		primaryAbility: "Charisma",
 		abilitySave: 6,
 		prereqs: "Charisma 13",
@@ -29,7 +39,7 @@
 		features: {
 			"spellcasting": {
 				name: "Spellcasting",
-				source: [["HB", 43], ["P", 79]],
+				source: ["LotJ", 78],
 				minlevel: 1,
 				description: desc([
 					"I can cast witchdoctor cantrips/spells that I know, using Charisma as my spellcasting ability",
@@ -43,13 +53,13 @@
 			},
       "unarmored defense": {
 				name: "Unarmored Defense",
-				source: [["HB", 26], ["P", 78]],
+				source: ["LotJ", 78],
 				minlevel: 1,
 				description: desc("Without armor and no shield, my AC is 10 + Dexterity modifier + Charisma modifier"),
 				armorOptions: [{
 					regExpSearch: /justToAddToDropDownAndAffectWildShape/,
 					name: "Unarmored Defense (Cha)",
-					source: [["HB", 26], ["P", 78]],
+					source: ["LotJ", 78],
 					ac: "10+Cha",
 					affectsWildShape: true,
 					selectNow: true,
@@ -57,13 +67,13 @@
 			},
 			"subclassfeature1": {
 				name: "Witchdoctor Archetype",
-				source: [["HB", 81], ["P", 81]],
+				source: ["LotJ", 81],
 				minlevel: 3,
 				description: desc('Choose the Witchdoctor Archetype for your innate powers and put it in the "Class" field '),
 			},
 			"hex points": {
 				name: "Hex Points",
-				source: [["HB", 81], ["P", 81]],
+				source: ["LotJ", 81],
 				minlevel: 1,
 				description: desc([
 					"As a bonus action, I can use sorcery points to create spell slots and vice versa",
@@ -80,7 +90,7 @@
 			},
 			"hexes": {
 				name: "Hexes",
-				source: [["HB", 44], ["P", 101]],
+				source: ["LotJ", 81],
 				minlevel: 3,
 				description: desc([
 					'Use the "Choose Feature" button above to add a Hex option to the third page',
@@ -96,7 +106,7 @@
 				}),
 				"careful spell": {
 					name: "Careful Spell",
-					source: [["SRD", 44], ["P", 102]],
+					source: ["LotJ", 81],
 					additional: "1 sorcery point",
 					description: desc([
 						"If the spell allows a saving throw, I can protect Cha modifier number of creatures",
@@ -105,13 +115,13 @@
 				},
 				"distant spell": {
 					name: "Distant Spell",
-					source: [["SRD", 44], ["P", 102]],
+					source: ["LotJ", 81],
 					additional: "1 sorcery point",
 					description: desc("I double the range of the spell or make the range 30 ft if the range was touch"),
 				},
 				"empowered spell": {
 					name: "Empowered Spell",
-					source: [["SRD", 44], ["P", 102]],
+					source: ["LotJ", 81],
 					additional: "1 sorcery point",
 					description: desc([
 						"If the spell uses damage dice, I can reroll my Charisma modifier number of damage dice",
@@ -120,32 +130,32 @@
 				},
 				"extended spell": {
 					name: "Extended Spell",
-					source: [["SRD", 44], ["P", 102]],
+					source: ["LotJ", 81],
 					additional: "1 sorcery point",
 					description: desc("If the spell has a duration of at least 1 min, I can double it, up to 24 hours"),
 				},
 				"heightened spell": {
 					name: "Heightened Spell",
-					source: [["SRD", 44], ["P", 102]],
+					source: ["LotJ", 81],
 					additional: "3 sorcery points",
 					description: desc("If the spell allows a saving throw, I can have one target get disadv. on their first save"),
 				},
 				"quickened spell": {
 					name: "Quickened Spell",
-					source: [["SRD", 44], ["P", 102]],
+					source: ["LotJ", 81],
 					additional: "2 sorcery points",
 					description: desc("If the spell has a casting time of 1 action, I can cast it as a bonus action"),
 					action: [["bonus action", ""]],
 				},
 				"subtle spell": {
 					name: "Subtle Spell",
-					source: [["SRD", 44], ["P", 102]],
+					source: ["LotJ", 81],
 					additional: "1 sorcery point",
 					description: desc("I can cast the spell without the need to use somatic or verbal components"),
 				},
 				"twinned spell": {
 					name: "Twinned Spell",
-					source: [["SRD", 44], ["P", 102]],
+					source: ["LotJ", 81],
 					additional: "1 sorcery point per spell level, minimum 1",
 					description: desc("If spell/cantrip has a target of one and not self, I can aim it at second target within range"),
 				},
