@@ -1,4 +1,4 @@
-var iFileName = "Witchdoctor [Lord of the Jungle's work, transcribed by ArtemisFox].js";
+iFileName = "Witchdoctor [Lord of the Jungle's work, transcribed by ArtemisFox].js";
 RequiredSheetVersion("13.0.6");
 
 SourceList["LotJ"] = {
@@ -55,7 +55,7 @@ ClassList["witchdoctor"] = {
 				name: "Unarmored Defense",
 				source: ["LotJ", 78],
 				minlevel: 1,
-				description: desc("Without armor and no shield, my AC is 10 + Dexterity modifier + Charisma modifier"),
+				description: desc(["Without armor and no shield, my AC is 10 + Dexterity modifier + Charisma modifier"]),
 				armorOptions: [{
 					regExpSearch: /justToAddToDropDownAndAffectWildShape/,
 					name: "Unarmored Defense (Cha)",
@@ -69,7 +69,7 @@ ClassList["witchdoctor"] = {
 				name: "Witchdoctor Archetype",
 				source: ["LotJ", 81],
 				minlevel: 3,
-				description: desc('Choose the Witchdoctor Archetype for your innate powers and put it in the "Class" field '),
+				description: desc(['Choose the Witchdoctor Archetype for your innate powers and put it in the "Class" field ']),
 			},
 			"hex points": {
 				name: "Hex Points",
@@ -117,7 +117,7 @@ ClassList["witchdoctor"] = {
 					name: "Distant Spell",
 					source: ["LotJ", 81],
 					additional: "1 sorcery point",
-					description: desc("I double the range of the spell or make the range 30 ft if the range was touch"),
+					description: desc(["I double the range of the spell or make the range 30 ft if the range was touch"]),
 				},
 				"empowered spell": {
 					name: "Empowered Spell",
@@ -132,39 +132,39 @@ ClassList["witchdoctor"] = {
 					name: "Extended Spell",
 					source: ["LotJ", 81],
 					additional: "1 sorcery point",
-					description: desc("If the spell has a duration of at least 1 min, I can double it, up to 24 hours"),
+					description: desc(["If the spell has a duration of at least 1 min, I can double it, up to 24 hours"]),
 				},
 				"heightened spell": {
 					name: "Heightened Spell",
 					source: ["LotJ", 81],
 					additional: "3 sorcery points",
-					description: desc("If the spell allows a saving throw, I can have one target get disadv. on their first save"),
+					description: desc(["If the spell allows a saving throw, I can have one target get disadv. on their first save"]),
 				},
 				"quickened spell": {
 					name: "Quickened Spell",
 					source: ["LotJ", 81],
 					additional: "2 sorcery points",
-					description: desc("If the spell has a casting time of 1 action, I can cast it as a bonus action"),
+					description: desc(["If the spell has a casting time of 1 action, I can cast it as a bonus action"]),
 					action: [["bonus action", ""]],
 				},
 				"subtle spell": {
 					name: "Subtle Spell",
 					source: ["LotJ", 81],
 					additional: "1 sorcery point",
-					description: desc("I can cast the spell without the need to use somatic or verbal components"),
+					description: desc(["I can cast the spell without the need to use somatic or verbal components"]),
 				},
 				"twinned spell": {
 					name: "Twinned Spell",
 					source: ["LotJ", 81],
 					additional: "1 sorcery point per spell level, minimum 1",
-					description: desc("If spell/cantrip has a target of one and not self, I can aim it at second target within range"),
+					description: desc(["If spell/cantrip has a target of one and not self, I can aim it at second target within range"]),
 				},
 			},
 			"sorcerous restoration": {
 				name: "Sorcerous Restoration",
-				source: [["SRD", 44], ["P", 102]],
+				source: ["LotJ", 81],
 				minlevel: 20,
-				description: desc("I regain 4 expended sorcery points whenever I finish a short rest"),
+				description: desc(["I regain 4 expended sorcery points whenever I finish a short rest"]),
 			},
 		},
-	}
+	};
