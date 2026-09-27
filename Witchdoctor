@@ -167,4 +167,4 @@ ClassList["witchdoctor"] = {
 				description: desc("I regain 4 expended sorcery points whenever I finish a short rest"),
 			},
 		},
-	},
+	}
