@@ -1,0 +1,160 @@
+"witchdoctor": {
+		regExpSearch: /witchdoctor/i,
+		name: "Witchdoctor",
+		source: [["HB", 42], ["P", 78]],
+		primaryAbility: "Charisma",
+		abilitySave: 6,
+		prereqs: "Charisma 13",
+		improvements: [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
+		die: 8,
+		saves: ["Wis", "Cha"],
+		skillstxt: {
+			primary: "Choose two from Arcana, Insight, Intimidation, Investigation, Medecine, Nature, Perception, and Survival"
+		},
+		weaponProfs: {
+			primary: [true, false],
+		},
+		equipment: "Witchdoctor starting equipment:" +
+			"\n \u2022 A dagger -or- any simple weapon;" +
+			"\n \u2022 A component pouch -or- a poisoner's kit;" +
+			"\n \u2022 A scholar's pack -or- an explorer's pack;" +
+			"\n \u2022 A herbalism kit, a quarterstaff, and an arcane focus." ,
+		subclasses: ["Witchdoctor Archetype", ["witchdoctor-voodoo master"]],
+		subclassGainedLevel: 3,
+		spellcastingFactor: 1,
+		spellcastingKnown: {
+			cantrips: [4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
+			spells: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12, 13, 13, 14, 14, 15, 15, 15, 15],
+		},
+		features: {
+			"spellcasting": {
+				name: "Spellcasting",
+				source: [["HB", 43], ["P", 79]],
+				minlevel: 1,
+				description: desc([
+					"I can cast witchdoctor cantrips/spells that I know, using Charisma as my spellcasting ability",
+					"I can use an arcane focus as a spellcasting focus for my witchdoctor spells",
+				]),
+				additional: levels.map(function (n, idx) {
+					var cantr = [4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6][idx];
+					var splls = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12, 13, 13, 14, 14, 15, 15, 15, 15][idx];
+					return cantr + " cantrips \u0026 " + splls + " spells known";
+				}),
+			},
+      "unarmored defense": {
+				name: "Unarmored Defense",
+				source: [["HB", 26], ["P", 78]],
+				minlevel: 1,
+				description: desc("Without armor and no shield, my AC is 10 + Dexterity modifier + Charisma modifier"),
+				armorOptions: [{
+					regExpSearch: /justToAddToDropDownAndAffectWildShape/,
+					name: "Unarmored Defense (Cha)",
+					source: [["HB", 26], ["P", 78]],
+					ac: "10+Cha",
+					affectsWildShape: true,
+					selectNow: true,
+				}],
+			},
+			"subclassfeature1": {
+				name: "Witchdoctor Archetype",
+				source: [["HB", 81], ["P", 81]],
+				minlevel: 3,
+				description: desc('Choose the Witchdoctor Archetype for your innate powers and put it in the "Class" field '),
+			},
+			"hex points": {
+				name: "Hex Points",
+				source: [["HB", 81], ["P", 81]],
+				minlevel: 1,
+				description: desc([
+					"As a bonus action, I can use sorcery points to create spell slots and vice versa",
+					"I can convert spell slots to sorcery points at a rate of 1 point per spell slot level",
+					"I can convert sorcery points to spell slots, which last until I finish a long rest, as follows:",
+					"Level 1 for 2 sorcery points;   level 2 for 3 sorcery points;   level 3 for 5 sorcery points",
+					"Level 4 for 6 sorcery points;   level 5 for 7 sorcery points",
+				]),
+				usages: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+				recovery: "long rest",
+				action: [["bonus action", "Font of Magic"]],
+				additional: "Hex Points",
+				limfeaname: "Hex Points",
+			},
+			"hexes": {
+				name: "Hexes",
+				source: [["HB", 44], ["P", 101]],
+				minlevel: 3,
+				description: desc([
+					'Use the "Choose Feature" button above to add a Hex option to the third page',
+					"I can use only 1 Hex option on a spell unless otherwise written",
+				]),
+				additional: levels.map(function (n) {
+					return n < 3 ? "" : (n < 10 ? 2 : n < 17 ? 3 : 4) + " known";
+				}),
+				extraname: "Hex Option",
+				extrachoices: ["Careful Spell", "Distant Spell", "Empowered Spell", "Extended Spell", "Heightened Spell", "Quickened Spell", "Subtle Spell", "Twinned Spell"],
+				extraTimes: levels.map(function (n) {
+					return n < 3 ? 0 : n < 10 ? 2 : n < 17 ? 3 : 4;
+				}),
+				"careful spell": {
+					name: "Careful Spell",
+					source: [["SRD", 44], ["P", 102]],
+					additional: "1 sorcery point",
+					description: desc([
+						"If the spell allows a saving throw, I can protect Cha modifier number of creatures",
+						"The selected creatures automatically succeed on their saving throws vs. the spell",
+					]),
+				},
+				"distant spell": {
+					name: "Distant Spell",
+					source: [["SRD", 44], ["P", 102]],
+					additional: "1 sorcery point",
+					description: desc("I double the range of the spell or make the range 30 ft if the range was touch"),
+				},
+				"empowered spell": {
+					name: "Empowered Spell",
+					source: [["SRD", 44], ["P", 102]],
+					additional: "1 sorcery point",
+					description: desc([
+						"If the spell uses damage dice, I can reroll my Charisma modifier number of damage dice",
+						"I can Empower a spell even if I use another Metamagic option on it",
+					]),
+				},
+				"extended spell": {
+					name: "Extended Spell",
+					source: [["SRD", 44], ["P", 102]],
+					additional: "1 sorcery point",
+					description: desc("If the spell has a duration of at least 1 min, I can double it, up to 24 hours"),
+				},
+				"heightened spell": {
+					name: "Heightened Spell",
+					source: [["SRD", 44], ["P", 102]],
+					additional: "3 sorcery points",
+					description: desc("If the spell allows a saving throw, I can have one target get disadv. on their first save"),
+				},
+				"quickened spell": {
+					name: "Quickened Spell",
+					source: [["SRD", 44], ["P", 102]],
+					additional: "2 sorcery points",
+					description: desc("If the spell has a casting time of 1 action, I can cast it as a bonus action"),
+					action: [["bonus action", ""]],
+				},
+				"subtle spell": {
+					name: "Subtle Spell",
+					source: [["SRD", 44], ["P", 102]],
+					additional: "1 sorcery point",
+					description: desc("I can cast the spell without the need to use somatic or verbal components"),
+				},
+				"twinned spell": {
+					name: "Twinned Spell",
+					source: [["SRD", 44], ["P", 102]],
+					additional: "1 sorcery point per spell level, minimum 1",
+					description: desc("If spell/cantrip has a target of one and not self, I can aim it at second target within range"),
+				},
+			},
+			"sorcerous restoration": {
+				name: "Sorcerous Restoration",
+				source: [["SRD", 44], ["P", 102]],
+				minlevel: 20,
+				description: desc("I regain 4 expended sorcery points whenever I finish a short rest"),
+			},
+		},
+	},
